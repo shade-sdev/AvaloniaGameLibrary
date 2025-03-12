@@ -1,0 +1,112 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:controls="clr-namespace:GameLibraryUI.Controls">
+
+    <Style Selector="Border.Navbar">
+        <Setter Property="Background" Value="rgba(0, 0, 0, 0.55)"></Setter>
+        <Setter Property="Padding" Value="15"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.Title">
+        <Setter Property="FontFamily" Value="{StaticResource RussoOne}"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.MenuItem">
+        <Setter Property="Foreground" Value="LightGray"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent" /> <!-- Ensure no border -->
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Padding" Value="0,0,0,25" />
+    </Style>
+
+    <Style Selector="Button.Menuitem:pointerover">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent" /> <!-- Ensure no border -->
+    </Style>
+
+    <Style Selector="Button.MenuItem /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="Border.MainBackground">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="60%,-30%" EndPoint="30%,100%">
+                    <GradientStop Color="#232526" Offset="0.0" />
+                    <GradientStop Color="#232526" Offset="0.5" />
+                    <GradientStop Color="#382529" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="TextBox.Field">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Background" Value="#32363a" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="border" Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Grid>
+                        <TextBlock x:Name="watermark" Name="PART_Watermark"
+                                   Text="{TemplateBinding Watermark}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                   IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Margin="{TemplateBinding Padding}"
+                                   Opacity="0.5"
+                                   IsHitTestVisible="False" />
+
+                        <TextPresenter x:Name="presenter" Name="PART_TextPresenter"
+                                       Text="{TemplateBinding Text, Mode=TwoWay}"
+                                       CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
+                                       CaretIndex="{TemplateBinding CaretIndex}"
+                                       SelectionStart="{TemplateBinding SelectionStart}"
+                                       SelectionEnd="{TemplateBinding SelectionEnd}"
+                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                       TextWrapping="{TemplateBinding TextWrapping}"
+                                       LineHeight="{TemplateBinding LineHeight}"
+                                       LetterSpacing="{TemplateBinding LetterSpacing}"
+                                       PasswordChar="{TemplateBinding PasswordChar}"
+                                       RevealPassword="{TemplateBinding RevealPassword}"
+                                       SelectionBrush="{TemplateBinding SelectionBrush}"
+                                       SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                       CaretBrush="{TemplateBinding CaretBrush}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                       Margin="{TemplateBinding Padding}" />
+                        
+                        <avalonia:MaterialIcon Kind="{Binding Path=(controls:TextBoxIconProperties.IconKind), RelativeSource={RelativeSource TemplatedParent}}"
+                                               Height="{Binding Path=(controls:TextBoxIconProperties.IconHeight), RelativeSource={RelativeSource TemplatedParent}}"
+                                               Width="{Binding Path=(controls:TextBoxIconProperties.IconWidth), RelativeSource={RelativeSource TemplatedParent}}"
+                                               Margin="{Binding Path=(controls:TextBoxIconProperties.IconMargin), RelativeSource={RelativeSource TemplatedParent}}"
+                                               Foreground="{Binding Path=(controls:TextBoxIconProperties.IconForeground), RelativeSource={RelativeSource TemplatedParent}}"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="TextBox.Field /template/ Border:pointerover#border">
+        <Setter Property="Background" Value="#4a4f54" />
+        
+    </Style>
+
+</Styles>
