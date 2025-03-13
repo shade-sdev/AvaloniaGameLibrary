@@ -12,13 +12,13 @@ A prototype UI for a game library built using Avalonia UI with WPF and MVVM.
 - Built with Avalonia UI and MVVM pattern
 
 ## Requirements
-- .NET 6 or later
+- .NET 9 or later
 - Avalonia UI
 
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/GameLibraryUI.git
+   git clone https://github.com/shade-sdev/AvaloniaGameLibrary.git
    ```
 2. Navigate to the project directory:
    ```sh
