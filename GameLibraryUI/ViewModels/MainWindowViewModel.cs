@@ -1,16 +1,25 @@
-﻿using ReactiveUI;
+﻿using System;
+using System.Reactive;
+using ReactiveUI;
 
 namespace GameLibraryUI.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : ViewModelBase, IScreen
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
     
-    private string _title = "Dashboard";
-    public string Title
+    public string Title { get; } = "GameAvaLib";
+
+    
+    public RoutingState Router { get; } = new();
+
+    public ReactiveCommand<Unit, IRoutableViewModel> NavigateHomeCommand { get; }
+
+    public MainWindowViewModel()
     {
-        get => _title;
-        set => this.RaiseAndSetIfChanged(ref _title, value);
+        NavigateHomeCommand = ReactiveCommand.CreateFromObservable
+            (() => Router.Navigate.Execute(new HomeViewModel(this)));
+        
+        Router.Navigate.Execute(new HomeViewModel(this));
+        Console.WriteLine(Router?.GetCurrentViewModel()?.GetType().Name);
     }
-    
 }
