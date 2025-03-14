@@ -6,10 +6,8 @@ namespace GameLibraryUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase, IScreen
 {
-    
-    public string Title { get; } = "GameAvaLib";
+    public static string Title => "GameAvaLib";
 
-    
     public RoutingState Router { get; } = new();
 
     public ReactiveCommand<Unit, IRoutableViewModel> NavigateHomeCommand { get; }
@@ -18,7 +16,7 @@ public class MainWindowViewModel : ViewModelBase, IScreen
     {
         NavigateHomeCommand = ReactiveCommand.CreateFromObservable
             (() => Router.Navigate.Execute(new HomeViewModel(this)));
-        
+
         Router.Navigate.Execute(new HomeViewModel(this));
         Console.WriteLine(Router?.GetCurrentViewModel()?.GetType().Name);
     }
