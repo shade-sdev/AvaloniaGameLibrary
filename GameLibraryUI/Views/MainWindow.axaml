@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:GameLibraryUI.ViewModels"
         xmlns:reactiveUi="http://reactiveui.net"
         xmlns:gameLibraryUi="clr-namespace:GameLibraryUI"
-        mc:Ignorable="d" d:DesignWidth="1050" d:DesignHeight="650"
+        mc:Ignorable="d" d:DesignWidth="1050" d:DesignHeight="700"
         Width="1050"
         Height="650"
         x:Class="GameLibraryUI.Views.MainWindow"
@@ -17,8 +17,6 @@
         Background="Transparent"
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaChromeHints="NoChrome"
-        ExtendClientAreaTitleBarHeightHint="-1"
         WindowStartupLocation="CenterScreen"
         Title="Dashboard"
         CanResize="False"
@@ -34,10 +32,10 @@
 
     <Border Classes="MainBackground">
 
-        <Grid RowDefinitions="*" ColumnDefinitions="180, *, 200">
+        <Grid RowDefinitions="0.03*, *" ColumnDefinitions="180, *, 200">
 
             <!-- Sidebar -->
-            <Grid Grid.Column="0"
+            <Grid Grid.Row="1" Grid.Column="0"
                   RowDefinitions="80, *, 200"
                   ColumnDefinitions="*">
 
@@ -97,7 +95,7 @@
             </Grid>
 
             <!-- Main Content -->
-            <reactiveUi:RoutedViewHost Grid.Column="1"
+            <reactiveUi:RoutedViewHost Grid.Row="1" Grid.Column="1"
                                        Router="{Binding Router}">
                 
                 <reactiveUi:RoutedViewHost.DefaultContent>
@@ -113,7 +111,7 @@
             </reactiveUi:RoutedViewHost>
 
             <!-- Friends -->
-            <Grid Grid.Column="2" RowDefinitions="0.2*, *, *">
+            <Grid Grid.Row="1" Grid.Column="2" RowDefinitions="0.2*, *, *">
                 <Grid Grid.Row="0">
 
                     <!-- Current User -->
