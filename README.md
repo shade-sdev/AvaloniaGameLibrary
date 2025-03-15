@@ -1,6 +1,6 @@
 # Game Library UI
 
-A prototype UI for a game library built using Avalonia UI with WPF and MVVM.
+A prototype UI for a game library built using Avalonia UI.
 
 ## Screenshot
 
