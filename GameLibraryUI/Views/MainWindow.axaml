@@ -73,7 +73,8 @@
                                 Command="{Binding NavigateHomeCommand}"
                                 Foreground="#e1324b" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=Collection, Text=Library}"
-                                Classes="MenuItem" />
+                                Classes="MenuItem"
+                                Command="{Binding NavigateLibraryCommand}" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=People, Text=Friends}"
                                 Classes="MenuItem" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=Downloads, Text=Downloads}"
@@ -97,17 +98,17 @@
             <!-- Main Content -->
             <reactiveUi:RoutedViewHost Grid.Row="1" Grid.Column="1"
                                        Router="{Binding Router}">
-                
+
                 <reactiveUi:RoutedViewHost.DefaultContent>
                     <TextBlock Text="Default content"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
                 </reactiveUi:RoutedViewHost.DefaultContent>
-                
+
                 <reactiveUi:RoutedViewHost.ViewLocator>
                     <gameLibraryUi:AppViewLocator />
                 </reactiveUi:RoutedViewHost.ViewLocator>
-                
+
             </reactiveUi:RoutedViewHost>
 
             <!-- Friends -->

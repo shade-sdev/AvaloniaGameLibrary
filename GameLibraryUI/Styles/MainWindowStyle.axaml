@@ -48,6 +48,18 @@
         </Setter>
     </Style>
 
+    <Style Selector="Grid.MainBackgroundUserControl">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="60%,-30%" EndPoint="30%,100%">
+                    <GradientStop Color="#232526" Offset="0.0" />
+                    <GradientStop Color="#232526" Offset="0.5" />
+                    <GradientStop Color="#382529" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style Selector="TextBox.Field">
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -90,14 +102,15 @@
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                        Margin="{TemplateBinding Padding}" />
-                        
-                        <avalonia:MaterialIcon Kind="{Binding Path=(controls:TextBoxIconProperties.IconKind), RelativeSource={RelativeSource TemplatedParent}}"
-                                               Height="{Binding Path=(controls:TextBoxIconProperties.IconHeight), RelativeSource={RelativeSource TemplatedParent}}"
-                                               Width="{Binding Path=(controls:TextBoxIconProperties.IconWidth), RelativeSource={RelativeSource TemplatedParent}}"
-                                               Margin="{Binding Path=(controls:TextBoxIconProperties.IconMargin), RelativeSource={RelativeSource TemplatedParent}}"
-                                               Foreground="{Binding Path=(controls:TextBoxIconProperties.IconForeground), RelativeSource={RelativeSource TemplatedParent}}"
-                                               HorizontalAlignment="Right"
-                                               VerticalAlignment="Center"/>
+
+                        <avalonia:MaterialIcon
+                            Kind="{Binding Path=(controls:TextBoxIconProperties.IconKind), RelativeSource={RelativeSource TemplatedParent}}"
+                            Height="{Binding Path=(controls:TextBoxIconProperties.IconHeight), RelativeSource={RelativeSource TemplatedParent}}"
+                            Width="{Binding Path=(controls:TextBoxIconProperties.IconWidth), RelativeSource={RelativeSource TemplatedParent}}"
+                            Margin="{Binding Path=(controls:TextBoxIconProperties.IconMargin), RelativeSource={RelativeSource TemplatedParent}}"
+                            Foreground="{Binding Path=(controls:TextBoxIconProperties.IconForeground), RelativeSource={RelativeSource TemplatedParent}}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center" />
                     </Grid>
                 </Border>
             </ControlTemplate>
@@ -106,7 +119,7 @@
 
     <Style Selector="TextBox.Field /template/ Border:pointerover#border">
         <Setter Property="Background" Value="#4a4f54" />
-        
+
     </Style>
 
 </Styles>

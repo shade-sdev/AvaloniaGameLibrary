@@ -7,21 +7,32 @@
              mc:Ignorable="d"
              x:Class="GameLibraryUI.Controls.CircularIconButton">
 
-    <Grid Width="{Binding $parent[controls:CircularIconButton].CircleSize}" 
-          Height="{Binding $parent[controls:CircularIconButton].CircleSize}">
-        
-        <!-- Circular Background -->
-        <Ellipse Fill="{Binding $parent[controls:CircularIconButton].BackgroundColor}" 
-                 Width="{Binding $parent[controls:CircularIconButton].CircleSize}" 
-                 Height="{Binding $parent[controls:CircularIconButton].CircleSize}" 
-                 StrokeThickness="0"/>
-        
-        <!-- Centered Material Icon -->
-        <avalonia:MaterialIcon Kind="{Binding $parent[controls:CircularIconButton].Kind}" 
-                               Height="{Binding $parent[controls:CircularIconButton].IconSize}" 
-                               Width="{Binding $parent[controls:CircularIconButton].IconSize}" 
-                               Foreground="{Binding $parent[controls:CircularIconButton].IconColor}" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center"/>
-    </Grid>
+    <Button
+        Classes="IconButton"
+        Width="{Binding $parent[controls:CircularIconButton].CircleSize}"
+        Height="{Binding $parent[controls:CircularIconButton].CircleSize}"
+        Background="{Binding $parent[controls:CircularIconButton].BackgroundColor}"
+        BorderThickness="0"
+        Padding="0"
+        CornerRadius="44"
+        Command="{Binding $parent[controls:CircularIconButton].Command}"
+        CommandParameter="{Binding $parent[controls:CircularIconButton].CommandParameter}">
+        <avalonia:MaterialIcon Kind="{Binding $parent[controls:CircularIconButton].Kind}"
+                               Height="{Binding $parent[controls:CircularIconButton].IconSize}"
+                               Width="{Binding $parent[controls:CircularIconButton].IconSize}"
+                               Foreground="{Binding $parent[controls:CircularIconButton].IconColor}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+
+    </Button>
+
+    <UserControl.Styles>
+        <Style Selector="Button.IconButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{Binding $parent[controls:CircularIconButton].HoverBackgroundColor}" />
+        </Style>
+
+        <Style Selector="Button.IconButton:pressed /template/ ContentPresenter">
+            <Setter Property="Background" Value="{Binding $parent[controls:CircularIconButton].PressedBackgroundColor}" />
+        </Style>
+    </UserControl.Styles>
 </UserControl>

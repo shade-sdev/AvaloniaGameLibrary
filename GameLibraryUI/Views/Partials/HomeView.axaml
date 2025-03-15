@@ -4,202 +4,202 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:GameLibraryUI.Controls"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.HomeView">
-    
+
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
     </UserControl.Styles>
-    
-    <Grid RowDefinitions="60, *, *">
 
-                <!-- Search Bar -->
-                <Border Grid.Row="0" Padding="10">
-                    <Grid ColumnDefinitions="1*, *"
-                          HorizontalAlignment="Stretch"
-                          VerticalAlignment="Center">
+    <Grid RowDefinitions="0.2*, *, *">
 
-                        <TextBox Grid.Column="0"
-                                 Classes="Field"
-                                 Watermark="Search"
-                                 FontFamily="{DynamicResource Poppins}"
-                                 FontSize="12"
-                                 Background="#32363a"
-                                 MinHeight="30"
-                                 Foreground="LightGray"
-                                 controls:TextBoxIconProperties.IconKind="Search"
-                                 controls:TextBoxIconProperties.IconForeground="LightGray"
-                                 controls:TextBoxIconProperties.IconHeight="20"
-                                 controls:TextBoxIconProperties.IconWidth="20"
-                                 controls:TextBoxIconProperties.IconMargin="0,0,5,0" />
+        <!-- Search Bar -->
+        <Border Grid.Row="0" Padding="10">
+            <Grid ColumnDefinitions="1*, *"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center">
 
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right">
+                <TextBox Grid.Column="0"
+                         Classes="Field"
+                         Watermark="Search"
+                         FontFamily="{DynamicResource Poppins}"
+                         FontSize="12"
+                         Background="#32363a"
+                         MinHeight="30"
+                         Foreground="LightGray"
+                         controls:TextBoxIconProperties.IconKind="Search"
+                         controls:TextBoxIconProperties.IconForeground="LightGray"
+                         controls:TextBoxIconProperties.IconHeight="20"
+                         controls:TextBoxIconProperties.IconWidth="20"
+                         controls:TextBoxIconProperties.IconMargin="0,0,5,0" />
 
-                            <controls:CircularIconButton
-                                CircleSize="30"
-                                IconSize="16"
-                                Kind="BellNotificationOutline"
-                                BackgroundColor="#32363a"
-                                IconColor="#ffffff" />
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right">
+
+                    <controls:CircularIconButton
+                        CircleSize="30"
+                        IconSize="16"
+                        Kind="BellNotificationOutline"
+                        BackgroundColor="#32363a"
+                        IconColor="#ffffff" />
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Header -->
+        <Border Grid.Row="1"
+                Padding="10"
+                ClipToBounds="True"
+                CornerRadius="38">
+
+            <Panel>
+                <Image
+                    asyncImageLoader:ImageLoader.Source="https://wallpapercat.com/w/full/6/6/5/15630-3840x2160-desktop-4k-hogwarts-legacy-background-image.jpg"
+                    Stretch="UniformToFill"
+                    RenderOptions.BitmapInterpolationMode="HighQuality" />
+                <Grid RowDefinitions="0.3*, *">
+                    <Border Grid.Row="0" Padding="10">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+
+                            <controls:InputBorderControl Text="Magic" Margin="0,0,5,0" />
+                            <controls:InputBorderControl Text="Fantasy" Margin="0,0,5,0" />
+                            <controls:InputBorderControl Text="Open World" Margin="0,0,5,0" />
 
                         </StackPanel>
-                    </Grid>
-                </Border>
+                    </Border>
 
-                <!-- Header -->
-                <Border Grid.Row="1"
-                        Padding="10"
-                        ClipToBounds="True"
-                        CornerRadius="38">
+                    <Border Grid.Row="1" Padding="10">
+                        <Grid ColumnDefinitions="*, *">
+                            <Grid Grid.Column="0"
+                                  RowDefinitions="Auto,Auto"
+                                  VerticalAlignment="Bottom">
 
-                    <Panel>
-                        <Image
-                            asyncImageLoader:ImageLoader.Source="https://wallpapercat.com/w/full/6/6/5/15630-3840x2160-desktop-4k-hogwarts-legacy-background-image.jpg"
-                            Stretch="UniformToFill"
-                            RenderOptions.BitmapInterpolationMode="HighQuality" />
-                        <Grid RowDefinitions="0.3*, *">
-                            <Border Grid.Row="0" Padding="10">
-                                <StackPanel
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left">
+                                <TextBlock Grid.Row="0"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           FontWeight="SemiBold"
+                                           Text="Hogwarts Legacy"
+                                           Foreground="White" />
 
-                                    <controls:InputBorderControl Text="Magic" Margin="0,0,5,0" />
-                                    <controls:InputBorderControl Text="Fantasy" Margin="0,0,5,0" />
-                                    <controls:InputBorderControl Text="Open World" Margin="0,0,5,0" />
+                                <TextBlock Grid.Row="1"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           LineHeight="12"
+                                           FontSize="8"
+                                           FontWeight="SemiLight"
+                                           TextWrapping="Wrap"
+                                           Text="Hogwarts Legacy is a 2023 action role-playing game developed by Avalanche Software and published by Warner Bros. Games under its Portkey Games label. It is part of the Wizarding World franchise, taking place a century prior to the Harry Potter novels."
+                                           Foreground="White" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom">
+
+                                    <controls:CircularIconButton
+                                        CircleSize="30"
+                                        IconSize="16"
+                                        Kind="HeartOutline"
+                                        BackgroundColor="#40000000"
+                                        IconColor="#ffffff" />
 
                                 </StackPanel>
-                            </Border>
-
-                            <Border Grid.Row="1" Padding="10">
-                                <Grid ColumnDefinitions="*, *">
-                                    <Grid Grid.Column="0"
-                                          RowDefinitions="Auto,Auto"
-                                          VerticalAlignment="Bottom">
-
-                                        <TextBlock Grid.Row="0"
-                                                   FontFamily="{DynamicResource Poppins}"
-                                                   FontSize="12"
-                                                   TextWrapping="Wrap"
-                                                   FontWeight="SemiBold"
-                                                   Text="Hogwarts Legacy"
-                                                   Foreground="White" />
-
-                                        <TextBlock Grid.Row="1"
-                                                   FontFamily="{DynamicResource Poppins}"
-                                                   LineHeight="12"
-                                                   FontSize="8"
-                                                   FontWeight="SemiLight"
-                                                   TextWrapping="Wrap"
-                                                   Text="Hogwarts Legacy is a 2023 action role-playing game developed by Avalanche Software and published by Warner Bros. Games under its Portkey Games label. It is part of the Wizarding World franchise, taking place a century prior to the Harry Potter novels."
-                                                   Foreground="White" />
-                                    </Grid>
-                                    <Grid Grid.Column="1">
-                                        <StackPanel HorizontalAlignment="Right"
-                                                    VerticalAlignment="Bottom">
-
-                                            <controls:CircularIconButton
-                                                CircleSize="30"
-                                                IconSize="16"
-                                                Kind="HeartOutline"
-                                                BackgroundColor="#40000000"
-                                                IconColor="#ffffff" />
-
-                                        </StackPanel>
-                                    </Grid>
-                                </Grid>
-                            </Border>
-
+                            </Grid>
                         </Grid>
-                    </Panel>
+                    </Border>
 
-                </Border>
+                </Grid>
+            </Panel>
 
-                <!-- Games -->
-                <Border Grid.Row="2" Padding="10">
-                    <Grid RowDefinitions="0.2*, *">
+        </Border>
 
-                        <Grid Grid.Row="0"
-                              ColumnDefinitions="*, *">
+        <!-- Games -->
+        <Border Grid.Row="2" Padding="10">
+            <Grid RowDefinitions="0.2*, *">
 
-                            <TextBlock Grid.Column="0"
-                                       FontFamily="{DynamicResource Poppins}"
-                                       FontSize="12"
-                                       TextWrapping="Wrap"
-                                       FontWeight="SemiBold"
-                                       Text="Actual Games"
-                                       Foreground="White"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left" />
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*, *">
 
-                            <StackPanel Grid.Column="1"
-                                        Orientation="Horizontal"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Right">
-                                <controls:CircularIconButton
-                                    CircleSize="30"
-                                    IconSize="16"
-                                    Kind="ChevronLeft"
-                                    BackgroundColor="#80464a47"
-                                    IconColor="#ffffff"
-                                    Margin="0,0,10,0" />
-                                <controls:CircularIconButton
-                                    CircleSize="30"
-                                    IconSize="16"
-                                    Kind="ChevronRight"
-                                    BackgroundColor="#80464a47"
-                                    IconColor="#ffffff" />
-                            </StackPanel>
-                        </Grid>
+                    <TextBlock Grid.Column="0"
+                               FontFamily="{DynamicResource Poppins}"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Text="Actual Games"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" />
 
-                        <Grid Grid.Row="1">
-                            <!-- WrapPanel to automatically arrange the game cards -->
-                            <WrapPanel Orientation="Horizontal"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       ItemWidth="162"
-                                       ItemHeight="220">
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right">
+                        <controls:CircularIconButton
+                            CircleSize="30"
+                            IconSize="16"
+                            Kind="ChevronLeft"
+                            BackgroundColor="#80464a47"
+                            IconColor="#ffffff"
+                            Margin="0,0,10,0" />
+                        <controls:CircularIconButton
+                            CircleSize="30"
+                            IconSize="16"
+                            Kind="ChevronRight"
+                            BackgroundColor="#80464a47"
+                            IconColor="#ffffff" />
+                    </StackPanel>
+                </Grid>
 
-                                <!-- Game Card 1 -->
-                                <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                                    <Image
-                                        asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co95gf.webp"
-                                        Stretch="UniformToFill"
-                                        RenderOptions.BitmapInterpolationMode="HighQuality" />
-                                </Border>
+                <Grid Grid.Row="1">
+                    <!-- WrapPanel to automatically arrange the game cards -->
+                    <WrapPanel Orientation="Horizontal"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               ItemWidth="162"
+                               ItemHeight="220">
 
-                                <!-- Game Card 2 -->
-                                <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                                    <Image
-                                        asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co9gmx.webp"
-                                        Stretch="UniformToFill"
-                                        RenderOptions.BitmapInterpolationMode="HighQuality" />
-                                </Border>
+                        <!-- Game Card 1 -->
+                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
+                            <Image
+                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co95gf.webp"
+                                Stretch="UniformToFill"
+                                RenderOptions.BitmapInterpolationMode="HighQuality" />
+                        </Border>
 
-                                <!-- Game Card 3 -->
-                                <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                                    <Image
-                                        asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7nbb.webp"
-                                        Stretch="UniformToFill"
-                                        RenderOptions.BitmapInterpolationMode="HighQuality" />
-                                </Border>
-                                <!-- Game Card 4 -->
-                                <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                                    <Image
-                                        asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7gdk.webp"
-                                        Stretch="UniformToFill"
-                                        RenderOptions.BitmapInterpolationMode="HighQuality" />
-                                </Border>
+                        <!-- Game Card 2 -->
+                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
+                            <Image
+                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co9gmx.webp"
+                                Stretch="UniformToFill"
+                                RenderOptions.BitmapInterpolationMode="HighQuality" />
+                        </Border>
 
-                            </WrapPanel>
-                        </Grid>
+                        <!-- Game Card 3 -->
+                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
+                            <Image
+                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7nbb.webp"
+                                Stretch="UniformToFill"
+                                RenderOptions.BitmapInterpolationMode="HighQuality" />
+                        </Border>
+                        <!-- Game Card 4 -->
+                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
+                            <Image
+                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7gdk.webp"
+                                Stretch="UniformToFill"
+                                RenderOptions.BitmapInterpolationMode="HighQuality" />
+                        </Border>
 
+                    </WrapPanel>
+                </Grid>
 
-                    </Grid>
-                </Border>
 
             </Grid>
+        </Border>
+
+    </Grid>
 </UserControl>
