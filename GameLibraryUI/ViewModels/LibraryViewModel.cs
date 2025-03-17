@@ -29,6 +29,6 @@ public class LibraryViewModel : ViewPartialBase, IScreen
 
     public LibraryViewModel() : base(null!)
     {
-        Router.Navigate.Execute(new LibraryViewTypeModel(this, Games, LibraryViewType.Grid));
+        Router.Navigate.Execute(new LibraryViewTypeModel(this, Games, LibraryViewType.List));
     }
 }

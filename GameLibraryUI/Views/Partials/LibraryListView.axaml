@@ -2,7 +2,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
+             xmlns:models="clr-namespace:GameLibraryUI.Models"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:controls="clr-namespace:GameLibraryUI.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="GameLibraryUI.Views.Partials.LibraryListView">
-    Welcome to Avalonia!
+             x:Class="GameLibraryUI.Views.Partials.LibraryListView"
+             x:DataType="viewModels:LibraryViewTypeModel">
+
+    <Design.DataContext>
+        <viewModels:LibraryViewTypeModel />
+    </Design.DataContext>
+
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Disabled"
+        VerticalScrollBarVisibility="Auto"
+        AllowAutoHide="True">
+
+        <Border Padding="10">
+            <ItemsRepeater
+                ItemsSource="{Binding Games}">
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Vertical" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:Game}">
+                        <Border Padding="5" CornerRadius="5" Background="#80464a47" Margin="0,0,0,5">
+                            <Grid ColumnDefinitions="0.1*, *, 0.1*">
+
+                                <Border Grid.Column="0" HorizontalAlignment="Left">
+                                    <Image asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                                           Stretch="Uniform"
+                                           Width="50"
+                                           Height="60"
+                                           RenderOptions.BitmapInterpolationMode="HighQuality"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,0,0" />
+                                </Border>
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           FontSize="12"
+                                           MaxLines="1"
+                                           TextWrapping="NoWrap"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontWeight="SemiBold"
+                                           Text="{Binding Title}"
+                                           Foreground="White" />
+
+                                <controls:CircularIconButton Grid.Column="2"
+                                                             CircleSize="30"
+                                                             IconSize="18"
+                                                             Kind="MoreHoriz"
+                                                             BackgroundColor="#99464a47"
+                                                             IconColor="#ffffff"
+                                                             HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </Border>
+
+    </ScrollViewer>
 </UserControl>
