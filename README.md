@@ -7,6 +7,7 @@ A prototype UI for a game library built using Avalonia UI.
 ![Game Library UI](GameLibraryUI/Assets/Screenshot.png)
 ![Game Library UI](GameLibraryUI/Assets/Screenshot_2.png)
 ![Game Library UI](GameLibraryUI/Assets/Screenshot_3.png)
+
 ## Features
 - Browse and manage your game collection
 - Modern and responsive UI

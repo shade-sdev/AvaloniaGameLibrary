@@ -30,7 +30,8 @@
                         <Border CornerRadius="5"
                                 Padding="6"
                                 Background="#80464a47"
-                                HorizontalAlignment="Stretch">
+                                HorizontalAlignment="Stretch"
+                                Margin="5,0">
 
                             <Grid ColumnDefinitions="0.1*, *, 0.1*">
 
