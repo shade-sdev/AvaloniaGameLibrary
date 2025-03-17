@@ -34,7 +34,7 @@
 
                             <Grid ColumnDefinitions="0.1*, *, 0.1*">
 
-                                <Border Grid.Column="0" CornerRadius="8" ClipToBounds="True">
+                                <Border Grid.Column="0" CornerRadius="16" ClipToBounds="True" Padding="0,4">
                                     <Image
                                         asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
                                         Stretch="Uniform"
@@ -62,7 +62,8 @@
                                                              Kind="MoreHoriz"
                                                              BackgroundColor="#99464a47"
                                                              IconColor="#ffffff"
-                                                             HorizontalAlignment="Right" />
+                                                             HorizontalAlignment="Right"
+                                                             Margin="4, 0" />
                             </Grid>
                         </Border>
                     </DataTemplate>
