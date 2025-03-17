@@ -1,0 +1,58 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:models="clr-namespace:GameLibraryUI.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameLibraryUI.Views.Partials.LibraryGridView"
+             x:DataType="viewModels:LibraryViewTypeModel">
+
+    <Design.DataContext>
+        <viewModels:LibraryViewTypeModel />
+    </Design.DataContext>
+
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Disabled"
+        VerticalScrollBarVisibility="Auto"
+        AllowAutoHide="True">
+
+        <Border Padding="10">
+            <ItemsRepeater
+                ItemsSource="{Binding Games }">
+                <ItemsRepeater.Layout>
+                    <WrapLayout HorizontalSpacing="15"
+                                VerticalSpacing="15"
+                                Orientation="Horizontal" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:Game}">
+                        <Border CornerRadius="5"
+                                ClipToBounds="True"
+                                Width="150"
+                                Height="225">
+                            <Grid RowDefinitions="*, 0.1*">
+                                <Image Grid.Row="0"
+                                       asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                                       Stretch="UniformToFill"
+                                       RenderOptions.BitmapInterpolationMode="HighQuality"
+                                       Margin="0,0,0,5" />
+                                <TextBlock Grid.Row="1"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           FontSize="12"
+                                           MaxLines="1"
+                                           TextWrapping="NoWrap"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontWeight="SemiBold"
+                                           Text="{Binding Title}"
+                                           Foreground="White" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </Border>
+
+    </ScrollViewer>
+</UserControl>

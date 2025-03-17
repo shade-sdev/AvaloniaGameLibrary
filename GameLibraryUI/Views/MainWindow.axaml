@@ -8,6 +8,7 @@
         xmlns:vm="clr-namespace:GameLibraryUI.ViewModels"
         xmlns:reactiveUi="http://reactiveui.net"
         xmlns:gameLibraryUi="clr-namespace:GameLibraryUI"
+        xmlns:converters="clr-namespace:GameLibraryUI.Converters"
         mc:Ignorable="d" d:DesignWidth="1050" d:DesignHeight="700"
         Width="1050"
         Height="650"
@@ -71,10 +72,11 @@
                         <Button Content="{avalonia:MaterialIconTextExt Kind=Home, Text=Home}"
                                 Classes="MenuItem"
                                 Command="{Binding NavigateHomeCommand}"
-                                Foreground="#e1324b" />
+                                Foreground="{Binding SelectedViewModel, Converter={x:Static converters:ViewModelToForegroundConverter.Instance}, ConverterParameter=HomeViewModel}" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=Collection, Text=Library}"
                                 Classes="MenuItem"
-                                Command="{Binding NavigateLibraryCommand}" />
+                                Command="{Binding NavigateLibraryCommand}"
+                                Foreground="{Binding SelectedViewModel, Converter={x:Static converters:ViewModelToForegroundConverter.Instance}, ConverterParameter=LibraryViewModel}" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=People, Text=Friends}"
                                 Classes="MenuItem" />
                         <Button Content="{avalonia:MaterialIconTextExt Kind=Downloads, Text=Downloads}"
