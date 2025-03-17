@@ -20,24 +20,28 @@
         AllowAutoHide="True">
 
         <Border Padding="10">
-            <ItemsRepeater
-                ItemsSource="{Binding Games}">
+            <ItemsRepeater ItemsSource="{Binding Games}">
                 <ItemsRepeater.Layout>
-                    <StackLayout Orientation="Vertical" />
+                    <!-- Use a StackLayout instead of WrapLayout for vertical stacking -->
+                    <StackLayout Orientation="Vertical" Spacing="10" />
                 </ItemsRepeater.Layout>
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:Game}">
-                        <Border Padding="5" CornerRadius="5" Background="#80464a47" Margin="0,0,0,5">
+                        <Border CornerRadius="5"
+                                Padding="6"
+                                Background="#80464a47"
+                                HorizontalAlignment="Stretch">
+
                             <Grid ColumnDefinitions="0.1*, *, 0.1*">
 
-                                <Border Grid.Column="0" HorizontalAlignment="Left">
-                                    <Image asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
-                                           Stretch="Uniform"
-                                           Width="50"
-                                           Height="60"
-                                           RenderOptions.BitmapInterpolationMode="HighQuality"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,0,0" />
+                                <Border Grid.Column="0" CornerRadius="8" ClipToBounds="True">
+                                    <Image
+                                        asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                                        Stretch="Uniform"
+                                        Width="50"
+                                        Height="60"
+                                        RenderOptions.BitmapInterpolationMode="HighQuality"
+                                        VerticalAlignment="Center" />
                                 </Border>
 
                                 <TextBlock Grid.Column="1"
@@ -49,7 +53,8 @@
                                            TextTrimming="CharacterEllipsis"
                                            FontWeight="SemiBold"
                                            Text="{Binding Title}"
-                                           Foreground="White" />
+                                           Foreground="White"
+                                           Margin="10,0" />
 
                                 <controls:CircularIconButton Grid.Column="2"
                                                              CircleSize="30"
