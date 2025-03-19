@@ -13,9 +13,9 @@ public class MainWindowViewModel : ViewModelBase, IScreen
     public ReactiveCommand<Unit, IRoutableViewModel> NavigateHomeCommand    { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> NavigateLibraryCommand { get; }
 
-    private IRoutableViewModel _selectedViewModel;
+    private IRoutableViewModel? _selectedViewModel;
 
-    public IRoutableViewModel SelectedViewModel
+    public IRoutableViewModel? SelectedViewModel
     {
         get => _selectedViewModel;
         set => this.RaiseAndSetIfChanged(ref _selectedViewModel, value);
@@ -31,6 +31,6 @@ public class MainWindowViewModel : ViewModelBase, IScreen
 
         Router.CurrentViewModel.Subscribe(viewModel => { SelectedViewModel = viewModel; });
 
-        Router.Navigate.Execute(new LibraryViewModel(this));
+        Router.Navigate.Execute(new HomeViewModel(this));
     }
 }
