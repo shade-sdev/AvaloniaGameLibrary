@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:GameLibraryUI.Controls"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
-             x:Class="GameLibraryUI.Views.Partials.HomeView">
+             x:Class="GameLibraryUI.Views.Partials.HomeView"
+             x:DataType="viewModels:HomeViewModel">
 
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
@@ -61,10 +63,10 @@
                     Stretch="UniformToFill"
                     RenderOptions.BitmapInterpolationMode="HighQuality" />
                 <Grid RowDefinitions="0.3*, *">
-                    <Border Grid.Row="0" Padding="10">
+                    <Border Grid.Row="0" Padding="20">
                         <StackPanel
                             Orientation="Horizontal"
-                            VerticalAlignment="Center"
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Left">
 
                             <controls:InputBorderControl Text="Magic" Margin="0,0,5,0" />
@@ -74,7 +76,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Border Grid.Row="1" Padding="10">
+                    <Border Grid.Row="1" Padding="20">
                         <Grid ColumnDefinitions="*, *">
                             <Grid Grid.Column="0"
                                   RowDefinitions="Auto,Auto"
@@ -119,84 +121,81 @@
         </Border>
 
         <!-- Games -->
-        <Border Grid.Row="2" Padding="10">
-            <Grid RowDefinitions="0.2*, *">
+        <Border Grid.Row="2">
+            <Grid RowDefinitions="0.25*, *">
 
-                <Grid Grid.Row="0"
-                      ColumnDefinitions="*, *">
+                <Border Grid.Row="0" Padding="10,0,10,10">
+                    <Grid
+                        ColumnDefinitions="*, *">
 
-                    <TextBlock Grid.Column="0"
-                               FontFamily="{DynamicResource Poppins}"
-                               FontSize="12"
-                               TextWrapping="Wrap"
-                               FontWeight="SemiBold"
-                               Text="Actual Games"
-                               Foreground="White"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left" />
+                        <TextBlock Grid.Column="0"
+                                   FontFamily="{DynamicResource Poppins}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap"
+                                   FontWeight="SemiBold"
+                                   Text="Actual Games"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
 
-                    <StackPanel Grid.Column="1"
-                                Orientation="Horizontal"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Right">
-                        <controls:CircularIconButton
-                            CircleSize="30"
-                            IconSize="16"
-                            Kind="ChevronLeft"
-                            BackgroundColor="#80464a47"
-                            IconColor="#ffffff"
-                            Margin="0,0,10,0" />
-                        <controls:CircularIconButton
-                            CircleSize="30"
-                            IconSize="16"
-                            Kind="ChevronRight"
-                            BackgroundColor="#80464a47"
-                            IconColor="#ffffff" />
-                    </StackPanel>
-                </Grid>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right">
+                            <controls:CircularIconButton
+                                CircleSize="30"
+                                IconSize="16"
+                                Kind="ChevronLeft"
+                                BackgroundColor="#80464a47"
+                                IconColor="#ffffff"
+                                Command="{Binding PreviousPageCommand}"
+                                Margin="0,0,10,0" />
+                            <controls:CircularIconButton
+                                CircleSize="30"
+                                IconSize="16"
+                                Kind="ChevronRight"
+                                BackgroundColor="#80464a47"
+                                Command="{Binding NextPageCommand}"
+                                IconColor="#ffffff" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
-                <Grid Grid.Row="1">
-                    <!-- WrapPanel to automatically arrange the game cards -->
-                    <WrapPanel Orientation="Horizontal"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               ItemWidth="162"
-                               ItemHeight="220">
+                <Carousel x:Name="Carousel"
+                          Grid.Row="1"
+                          SelectedIndex="{Binding CurrentPage, Mode=TwoWay}"
+                          ItemsSource="{Binding GamePages}">
 
-                        <!-- Game Card 1 -->
-                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                            <Image
-                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co95gf.webp"
-                                Stretch="UniformToFill"
-                                RenderOptions.BitmapInterpolationMode="HighQuality" />
-                        </Border>
+                    <Carousel.PageTransition>
+                        <CompositePageTransition>
+                            <PageSlide Duration="0:00:01.000" Orientation="Horizontal" />
+                        </CompositePageTransition>
+                    </Carousel.PageTransition>
 
-                        <!-- Game Card 2 -->
-                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                            <Image
-                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co9gmx.webp"
-                                Stretch="UniformToFill"
-                                RenderOptions.BitmapInterpolationMode="HighQuality" />
-                        </Border>
+                    <Carousel.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsRepeater ItemsSource="{Binding Games}">
+                                <ItemsRepeater.Layout>
+                                    <WrapLayout Orientation="Horizontal" />
+                                </ItemsRepeater.Layout>
+                                <ItemsRepeater.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="5"
+                                                Margin="6,0,6,0"
+                                                ClipToBounds="True"
+                                                Width="154"
+                                                Height="220">
+                                            <Image asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                                                   Stretch="UniformToFill"
+                                                   RenderOptions.BitmapInterpolationMode="HighQuality" />
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsRepeater.ItemTemplate>
+                            </ItemsRepeater>
+                        </DataTemplate>
+                    </Carousel.ItemTemplate>
 
-                        <!-- Game Card 3 -->
-                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                            <Image
-                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7nbb.webp"
-                                Stretch="UniformToFill"
-                                RenderOptions.BitmapInterpolationMode="HighQuality" />
-                        </Border>
-                        <!-- Game Card 4 -->
-                        <Border CornerRadius="5" Margin="0,0,10,0" ClipToBounds="True">
-                            <Image
-                                asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_cover_big/co7gdk.webp"
-                                Stretch="UniformToFill"
-                                RenderOptions.BitmapInterpolationMode="HighQuality" />
-                        </Border>
-
-                    </WrapPanel>
-                </Grid>
-
+                </Carousel>
 
             </Grid>
         </Border>
