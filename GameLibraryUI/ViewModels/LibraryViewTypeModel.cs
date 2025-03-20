@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using GameLibraryUI.Models;
-using GameLibraryUI.Views.Partials;
 using ReactiveUI;
 
 namespace GameLibraryUI.ViewModels;
@@ -11,4 +10,8 @@ public class LibraryViewTypeModel(IScreen screen, ObservableCollection<Game> gam
     public LibraryViewType ViewType { get; set; } = viewType;
 
     public ObservableCollection<Game> Games { get; set; } = games;
+
+    public LibraryViewTypeModel() : this(null, null, LibraryViewType.Grid)
+    {
+    }
 }

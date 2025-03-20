@@ -5,13 +5,17 @@
              xmlns:controls="clr-namespace:GameLibraryUI.Controls"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.HomeView"
              x:DataType="viewModels:HomeViewModel">
 
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
     </UserControl.Styles>
+
+    <Design.DataContext>
+        <viewModels:HomeViewModel />
+    </Design.DataContext>
 
     <Grid RowDefinitions="0.2*, *, *" ColumnDefinitions="*, 200">
 

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              xmlns:controls="clr-namespace:GameLibraryUI.Controls"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="650"
              x:Class="GameLibraryUI.Controls.FriendListControl">
     <Grid RowDefinitions="0.2*, *, *">
         <Grid Grid.Row="0">
@@ -105,7 +105,7 @@
 
         <!-- Recently Played -->
         <Grid Grid.Row="2">
-            <Border Padding="10,10">
+            <Border Padding="10,0,10,0">
                 <Grid RowDefinitions="0.2*, *">
                     <Grid Grid.Row="0" ColumnDefinitions="*, 0.3*">
                         <TextBlock Grid.Column="0"

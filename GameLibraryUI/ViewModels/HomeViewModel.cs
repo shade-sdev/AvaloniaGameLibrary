@@ -10,9 +10,9 @@ namespace GameLibraryUI.ViewModels;
 
 public class HomeViewModel : ViewPartialBase
 {
-    private int _currentPage;
-    private ObservableCollection<GamePage> _gamePages = [];
-    private readonly ObservableCollection<Game> _games = GameService.Games;
+    private          int                            _currentPage;
+    private          ObservableCollection<GamePage> _gamePages = [];
+    private readonly ObservableCollection<Game>     _games     = GameService.Games;
 
     public int CurrentPage
     {
@@ -26,27 +26,32 @@ public class HomeViewModel : ViewPartialBase
         set => this.RaiseAndSetIfChanged(ref _gamePages, value);
     }
 
-    public ReactiveCommand<Unit, Unit> NextPageCommand { get; }
+    public ReactiveCommand<Unit, Unit> NextPageCommand     { get; }
     public ReactiveCommand<Unit, Unit> PreviousPageCommand { get; }
 
     public HomeViewModel(IScreen screen) : base(screen)
     {
         NextPageCommand = ReactiveCommand.Create(() =>
-        {
-            if (CurrentPage < GamePages.Count - 1)
-            {
-                CurrentPage++;
-            }
-        });
+                                                 {
+                                                     if (CurrentPage < GamePages.Count - 1)
+                                                     {
+                                                         CurrentPage++;
+                                                     }
+                                                 });
 
         PreviousPageCommand = ReactiveCommand.Create(() =>
-        {
-            if (CurrentPage > 0)
-            {
-                CurrentPage--;
-            }
-        });
+                                                     {
+                                                         if (CurrentPage > 0)
+                                                         {
+                                                             CurrentPage--;
+                                                         }
+                                                     });
 
+        UpdateGamePages();
+    }
+
+    public HomeViewModel() : base(null)
+    {
         UpdateGamePages();
     }
 
@@ -63,9 +68,10 @@ public class HomeViewModel : ViewPartialBase
         GamePages.Clear();
 
         GamePages.AddRange(_games
-            .Select((game, index) => new { game, index })
-            .GroupBy(x => x.index / gamesPerPage)
-            .Select(g => new GamePage { Games = new ObservableCollection<Game>(g.Select(x => x.game)) }));
+                           .Select((game, index) => new { game, index })
+                           .GroupBy(x => x.index / gamesPerPage)
+                           .Select(g => new GamePage
+                                       { Games = new ObservableCollection<Game>(g.Select(x => x.game)) }));
 
         this.RaisePropertyChanged(nameof(GamePages));
     }
