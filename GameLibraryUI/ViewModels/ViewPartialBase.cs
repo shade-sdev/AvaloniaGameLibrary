@@ -1,8 +1,7 @@
 using System;
-using GameLibraryUI.ViewModels;
 using ReactiveUI;
 
-namespace GameLibraryUI.Views.Partials;
+namespace GameLibraryUI.ViewModels;
 
 public abstract class ViewPartialBase(IScreen screen) : ViewModelBase, IRoutableViewModel
 {
