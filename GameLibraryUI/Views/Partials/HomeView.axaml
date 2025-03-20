@@ -13,10 +13,10 @@
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
     </UserControl.Styles>
 
-    <Grid RowDefinitions="0.2*, *, *">
+    <Grid RowDefinitions="0.2*, *, *" ColumnDefinitions="*, 200">
 
         <!-- Search Bar -->
-        <Border Grid.Row="0" Padding="10">
+        <Border Grid.Column="0" Grid.Row="0" Padding="10">
             <Grid ColumnDefinitions="1*, *"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Center">
@@ -52,7 +52,7 @@
         </Border>
 
         <!-- Header -->
-        <Border Grid.Row="1"
+        <Border Grid.Column="0" Grid.Row="1"
                 Padding="10"
                 ClipToBounds="True"
                 CornerRadius="38">
@@ -121,7 +121,7 @@
         </Border>
 
         <!-- Games -->
-        <Border Grid.Row="2">
+        <Border Grid.Column="0" Grid.Row="2">
             <Grid RowDefinitions="0.25*, *">
 
                 <Border Grid.Row="0" Padding="10,0,10,10">
@@ -199,6 +199,10 @@
 
             </Grid>
         </Border>
+
+        <controls:FriendListControl Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="1" />
 
     </Grid>
 </UserControl>

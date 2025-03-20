@@ -74,10 +74,12 @@
     </UserControl.Resources>
 
     <Grid RowDefinitions="0.1*, *"
+          ColumnDefinitions="*, 200"
           Classes="MainBackgroundUserControl">
 
         <!-- Search -->
-        <Border Grid.Row="0"
+        <Border Grid.Column="0"
+                Grid.Row="0"
                 Padding="10"
                 VerticalAlignment="Center">
 
@@ -123,9 +125,9 @@
 
         <!-- Library -->
 
-        <reactiveUi:RoutedViewHost
-            Grid.Row="1"
-            Router="{Binding Router}">
+        <reactiveUi:RoutedViewHost Grid.Column="0"
+                                   Grid.Row="1"
+                                   Router="{Binding Router}">
 
             <reactiveUi:RoutedViewHost.DefaultContent>
                 <TextBlock Text="Default content"
@@ -139,6 +141,11 @@
 
         </reactiveUi:RoutedViewHost>
 
+        <controls:FriendListControl Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1" />
+
     </Grid>
+
 
 </UserControl>
