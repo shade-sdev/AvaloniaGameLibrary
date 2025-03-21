@@ -8,8 +8,8 @@ A prototype UI for a game library built using Avalonia UI.
 ![Game Library UI](HexLaunch/Assets/S2.png)
 ![Game Library UI](HexLaunch/Assets/S3.png)
 ![Game Library UI](HexLaunch/Assets/S4.png)
-[![Watch the video](HexLaunch/Assets/S4.png)](HexLaunch/Assets/Demo.mp4)
 
+https://github.com/user-attachments/assets/3789e026-8ee6-4978-9d5a-416a7016e6da
 
 ## Features
 - Browse and manage your game collection
