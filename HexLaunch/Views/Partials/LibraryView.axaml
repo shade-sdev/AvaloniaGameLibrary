@@ -1,0 +1,152 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:HexLaunch.Controls"
+             xmlns:viewModels="clr-namespace:HexLaunch.ViewModels"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:models="clr-namespace:HexLaunch.Models"
+             xmlns:reactiveUi="http://reactiveui.net"
+             xmlns:gameLibraryUi="clr-namespace:HexLaunch"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             x:Class="HexLaunch.Views.Partials.LibraryView"
+             x:DataType="viewModels:LibraryViewModel"
+             Margin="5,0,0,0">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <viewModels:LibraryViewModel />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="GridTemplate"
+                      DataType="{x:Type models:Game}">
+            <Border CornerRadius="5"
+                    ClipToBounds="True"
+                    Width="150"
+                    Height="225">
+                <Grid RowDefinitions="*, 0.1*">
+                    <Image Grid.Row="0"
+                           asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                           Stretch="UniformToFill"
+                           RenderOptions.BitmapInterpolationMode="HighQuality"
+                           Margin="0,0,0,5" />
+                    <TextBlock Grid.Row="1"
+                               FontFamily="{DynamicResource Poppins}"
+                               FontSize="12"
+                               MaxLines="1"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               FontWeight="SemiBold"
+                               Text="{Binding Title}"
+                               Foreground="White" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ListTemplate"
+                      DataType="{x:Type models:Game}">
+            <Border CornerRadius="5"
+                    ClipToBounds="True"
+                    Width="300"
+                    Height="80">
+                <Grid ColumnDefinitions="80, *">
+                    <Image Grid.Column="0"
+                           asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                           Stretch="UniformToFill"
+                           RenderOptions.BitmapInterpolationMode="HighQuality"
+                           Margin="5" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontFamily="{DynamicResource Poppins}"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Text="wa"
+                               Foreground="White" />
+                </Grid>
+            </Border>
+
+
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid RowDefinitions="0.1*, *"
+          ColumnDefinitions="*, 200"
+          Classes="MainBackgroundUserControl">
+
+        <!-- Search -->
+        <Border Grid.Column="0"
+                Grid.Row="0"
+                Padding="10"
+                VerticalAlignment="Center">
+
+            <Grid ColumnDefinitions="*, *">
+                <TextBox Grid.Column="0"
+                         Classes="Field"
+                         Watermark="Search"
+                         FontFamily="{DynamicResource Poppins}"
+                         FontSize="12"
+                         Background="#32363a"
+                         MinHeight="30"
+                         MaxHeight="30"
+                         Foreground="LightGray"
+                         controls:TextBoxIconProperties.IconKind="Search"
+                         controls:TextBoxIconProperties.IconForeground="LightGray"
+                         controls:TextBoxIconProperties.IconHeight="20"
+                         controls:TextBoxIconProperties.IconWidth="20"
+                         controls:TextBoxIconProperties.IconMargin="0,0,5,0" />
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <controls:CircularIconButton
+                        x:Name="GridViewButton"
+                        CircleSize="30"
+                        IconSize="16"
+                        Kind="ViewGrid"
+                        BackgroundColor="#32363a"
+                        IconColor="#ffffff"
+                        Margin="0,0,10,0"
+                        Command="{Binding NavigateGridView}" />
+                    <controls:CircularIconButton
+                        CircleSize="30"
+                        IconSize="16"
+                        x:Name="ListViewButton"
+                        Kind="HamburgerMenu"
+                        BackgroundColor="#32363a"
+                        IconColor="#ffffff"
+                        Command="{Binding NavigateListView}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Library -->
+
+        <reactiveUi:RoutedViewHost Grid.Column="0"
+                                   Grid.Row="1"
+                                   Router="{Binding Router}">
+
+            <reactiveUi:RoutedViewHost.DefaultContent>
+                <TextBlock Text="Default content"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </reactiveUi:RoutedViewHost.DefaultContent>
+
+            <reactiveUi:RoutedViewHost.ViewLocator>
+                <gameLibraryUi:AppViewLocator />
+            </reactiveUi:RoutedViewHost.ViewLocator>
+
+        </reactiveUi:RoutedViewHost>
+
+        <controls:FriendListControl Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1" />
+
+    </Grid>
+
+
+</UserControl>

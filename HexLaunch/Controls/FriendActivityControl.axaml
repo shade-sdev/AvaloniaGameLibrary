@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:controls="clr-namespace:HexLaunch.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HexLaunch.Controls.FriendActivityControl">
+
+    <Grid ColumnDefinitions="Auto,*">
+        <Grid Grid.Column="0" Margin="0,0,10,0">
+            <!-- Avatar -->
+            <Border Width="30"
+                    Height="30"
+                    ClipToBounds="True"
+                    CornerRadius="20">
+                <Image x:Name="UserAvatar"
+                       asyncImageLoader:ImageLoader.Source="{Binding $parent[controls:FriendActivityControl].UserAvatarUrl}"
+                       Stretch="UniformToFill"
+                       RenderOptions.BitmapInterpolationMode="HighQuality" />
+            </Border>
+
+            <!-- Status Indicator -->
+            <Border Width="10"
+                    Height="10"
+                    CornerRadius="5"
+                    Background="#43b581"
+                    BorderBrush="#1E1E1E"
+                    BorderThickness="1.5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,-2,-2" />
+        </Grid>
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock x:Name="UsernameText"
+                       FontFamily="{DynamicResource Poppins}"
+                       FontSize="10"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Text="{Binding $parent[controls:FriendActivityControl].Username}"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    FontFamily="{DynamicResource Poppins}"
+                    FontSize="8"
+                    TextWrapping="Wrap"
+                    FontWeight="SemiLight"
+                    Text="Join"
+                    Foreground="White"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,8,0" />
+                <Border Background="#10ffffff"
+                        CornerRadius="10"
+                        Padding="6,2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ClipToBounds="True">
+                    <TextBlock x:Name="GameNameText"
+                               Text="{Binding $parent[controls:FriendActivityControl].GameName}"
+                               FontFamily="{DynamicResource Poppins}"
+                               Foreground="White"
+                               FontSize="8"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

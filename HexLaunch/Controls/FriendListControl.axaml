@@ -1,0 +1,160 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:controls="clr-namespace:HexLaunch.Controls"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="650"
+             x:Class="HexLaunch.Controls.FriendListControl">
+    <Grid RowDefinitions="0.2*, *, *">
+        <Grid Grid.Row="0">
+
+            <!-- Current User -->
+            <Border Padding="10">
+                <Grid ColumnDefinitions="0.4*, *"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center">
+
+                    <Border Grid.Column="0"
+                            Width="35"
+                            Height="35"
+                            ClipToBounds="True"
+                            CornerRadius="20"
+                            Margin="0,0,10,0">
+                        <Image
+                            asyncImageLoader:ImageLoader.Source="https://avatars.githubusercontent.com/u/38840823?v=4"
+                            Stretch="UniformToFill"
+                            RenderOptions.BitmapInterpolationMode="HighQuality" />
+                    </Border>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical">
+                        <TextBlock
+                            FontFamily="{DynamicResource Poppins}"
+                            FontSize="12"
+                            TextWrapping="Wrap"
+                            FontWeight="SemiBold"
+                            Text="Shade"
+                            Foreground="White"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                        <TextBlock
+                            FontFamily="{DynamicResource Poppins}"
+                            FontSize="10"
+                            TextWrapping="Wrap"
+                            FontWeight="SemiLight"
+                            Text="shade@shade.com"
+                            Foreground="White"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Friends Online -->
+        <Grid Grid.Row="1">
+            <Border Padding="10, 4">
+                <Grid RowDefinitions="0.15*, *">
+                    <TextBlock Grid.Row="0"
+                               FontFamily="{DynamicResource Poppins}"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Text="Friends Online"
+                               Foreground="White"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left" />
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Vertical">
+
+                        <controls:FriendActivityControl
+                            Username="The_ヘマント"
+                            GameName="Marvel Rivals"
+                            UserAvatarUrl="https://cdn.discordapp.com/avatars/449653683005947924/837fe6e701d550c7f17c7c2c0604b311.webp?size=100"
+                            Margin="0,0,0,10" />
+
+                        <controls:FriendActivityControl
+                            Username="ClassyPredator"
+                            GameName="Split Fiction"
+                            UserAvatarUrl="https://cdn.discordapp.com/avatars/282275704010178560/c63c27b938595f0b7af85cb70fd5e693.webp?size=100"
+                            Margin="0,0,0,10" />
+
+                        <controls:FriendActivityControl
+                            Username="TeKyco"
+                            GameName="Split Fiction"
+                            UserAvatarUrl="https://cdn.discordapp.com/avatars/252074626589392896/8e6e25776a614f08336b919a25e4eb0a.webp?size=100"
+                            Margin="0,0,0,10" />
+
+                        <controls:FriendActivityControl
+                            Username="Dorem"
+                            GameName="Grand Theft Auto V"
+                            UserAvatarUrl="https://cdn.discordapp.com/avatars/193340686442037249/0afb9318bcb519e6b4b3d5d3d66dae15.webp?size=100"
+                            Margin="0,0,0,10" />
+
+                        <controls:FriendActivityControl
+                            Username="Shade"
+                            GameName="EA SPORTS FC™ 25"
+                            UserAvatarUrl="https://avatars.githubusercontent.com/u/38840823?v=4"
+                            Margin="0,0,0,10" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Recently Played -->
+        <Grid Grid.Row="2">
+            <Border Padding="10,0,10,0">
+                <Grid RowDefinitions="0.2*, *">
+                    <Grid Grid.Row="0" ColumnDefinitions="*, 0.3*">
+                        <TextBlock Grid.Column="0"
+                                   FontFamily="{DynamicResource Poppins}"
+                                   FontSize="12"
+                                   TextWrapping="Wrap"
+                                   FontWeight="SemiBold"
+                                   Text="Recently Played"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
+                        <controls:CircularIconButton Grid.Column="1"
+                                                     CircleSize="30"
+                                                     IconSize="18"
+                                                     Kind="MoreHoriz"
+                                                     BackgroundColor="#80464a47"
+                                                     IconColor="#ffffff"
+                                                     HorizontalAlignment="Right" />
+                    </Grid>
+                    <Border Grid.Row="1" Padding="0,4,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <controls:GameProgressControl
+                                GameTitle="Grand Theft Auto VI"
+                                ProgressValue="72"
+                                GameImageSource="https://images.igdb.com/igdb/image/upload/t_cover_big/co7gdk.webp"
+                                Margin="0,0,0,10" />
+
+                            <controls:GameProgressControl
+                                GameTitle="Assassin's Creed Shadows"
+                                ProgressValue="55"
+                                GameImageSource="https://images.igdb.com/igdb/image/upload/t_cover_big/co87cu.webp"
+                                Margin="0,0,0,10" />
+
+                            <controls:GameProgressControl
+                                GameTitle="Mafia: The Old Country"
+                                ProgressValue="27"
+                                GameImageSource="https://images.igdb.com/igdb/image/upload/t_cover_big/co8pfn.webp"
+                                Margin="0,0,0,10" />
+
+                            <controls:GameProgressControl
+                                GameTitle="Vampire: The Masquerade - Bloodlines 2"
+                                ProgressValue="33"
+                                GameImageSource="https://images.igdb.com/igdb/image/upload/t_cover_big/co2hwd.webp"
+                                Margin="0,0,0,10" />
+
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

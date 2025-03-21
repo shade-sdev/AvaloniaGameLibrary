@@ -1,0 +1,119 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:vm="clr-namespace:HexLaunch.ViewModels"
+        xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:gameLibraryUi="clr-namespace:HexLaunch"
+        xmlns:converters="clr-namespace:HexLaunch.Converters"
+        mc:Ignorable="d" d:DesignWidth="1050" d:DesignHeight="650"
+        Width="1050"
+        Height="650"
+        x:Class="HexLaunch.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="False"
+        WindowStartupLocation="CenterScreen"
+        Title="Dashboard"
+        CanResize="False"
+        PointerPressed="OnWindowDrag">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+        <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
+    </Window.Styles>
+
+    <Border Classes="MainBackground">
+
+        <Grid ColumnDefinitions="165, *">
+
+            <!-- Sidebar -->
+            <Grid Grid.Column="0"
+                  RowDefinitions="80, *, 200"
+                  ColumnDefinitions="*"
+                  Background="#40121212">
+
+                <!-- Title -->
+                <Border Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="20">
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+
+                        <avalonia:MaterialIcon Kind="Games"
+                                               Height="20"
+                                               Width="20"
+                                               Margin="0,0,10,0"
+                                               Foreground="#e1324b"
+                                               HorizontalAlignment="Center" />
+                        <TextBlock Foreground="White"
+                                   FontFamily="{DynamicResource Poppins}"
+                                   FontWeight="Bold"
+                                   Text="{Binding Title}"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Menus -->
+                <Border Grid.Row="1" Grid.Column="0" Padding="20,0,0,0">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top">
+
+                        <Button Content="{avalonia:MaterialIconTextExt Kind=Home, Text=Home}"
+                                Classes="MenuItem"
+                                Command="{Binding NavigateHomeCommand}"
+                                Foreground="{Binding SelectedViewModel, Converter={x:Static converters:ViewModelToForegroundConverter.Instance}, ConverterParameter=HomeViewModel}" />
+                        <Button Content="{avalonia:MaterialIconTextExt Kind=Collection, Text=Library}"
+                                Classes="MenuItem"
+                                Command="{Binding NavigateLibraryCommand}"
+                                Foreground="{Binding SelectedViewModel, Converter={x:Static converters:ViewModelToForegroundConverter.Instance}, ConverterParameter=LibraryViewModel}" />
+                        <Button Content="{avalonia:MaterialIconTextExt Kind=People, Text=Friends}"
+                                Classes="MenuItem" />
+                        <Button Content="{avalonia:MaterialIconTextExt Kind=Downloads, Text=Downloads}"
+                                Classes="MenuItem" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Setting -->
+                <Border Grid.Row="2" Grid.Column="0" Padding="20,0,0,0">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom">
+
+                        <Button Content="{avalonia:MaterialIconTextExt Kind=Settings, Text=Settings}"
+                                Classes="MenuItem" />
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <!-- Main Content -->
+            <reactiveUi:RoutedViewHost Grid.Column="1"
+                                       Router="{Binding Router}">
+
+                <reactiveUi:RoutedViewHost.DefaultContent>
+                    <TextBlock Text="Default content"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </reactiveUi:RoutedViewHost.DefaultContent>
+
+                <reactiveUi:RoutedViewHost.ViewLocator>
+                    <gameLibraryUi:AppViewLocator />
+                </reactiveUi:RoutedViewHost.ViewLocator>
+
+            </reactiveUi:RoutedViewHost>
+
+        </Grid>
+
+    </Border>
+
+</Window>

@@ -1,0 +1,213 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:HexLaunch.Controls"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:viewModels="clr-namespace:HexLaunch.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
+             x:Class="HexLaunch.Views.Partials.HomeView"
+             x:DataType="viewModels:HomeViewModel"
+             Margin="8,0,0,0">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <viewModels:HomeViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="0.2*, *, *" ColumnDefinitions="*, 200">
+
+        <!-- Search Bar -->
+        <Border Grid.Column="0" Grid.Row="0" Padding="10">
+            <Grid ColumnDefinitions="1*, *"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center">
+
+                <TextBox Grid.Column="0"
+                         Classes="Field"
+                         Watermark="Search"
+                         FontFamily="{DynamicResource Poppins}"
+                         FontSize="12"
+                         Background="#32363a"
+                         MinHeight="30"
+                         Foreground="LightGray"
+                         controls:TextBoxIconProperties.IconKind="Search"
+                         controls:TextBoxIconProperties.IconForeground="LightGray"
+                         controls:TextBoxIconProperties.IconHeight="20"
+                         controls:TextBoxIconProperties.IconWidth="20"
+                         controls:TextBoxIconProperties.IconMargin="0,0,5,0" />
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right">
+
+                    <controls:CircularIconButton
+                        CircleSize="30"
+                        IconSize="16"
+                        Kind="BellNotificationOutline"
+                        BackgroundColor="#32363a"
+                        IconColor="#ffffff" />
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Header -->
+        <Border Grid.Column="0" Grid.Row="1"
+                Padding="10"
+                ClipToBounds="True"
+                CornerRadius="38">
+
+            <Panel>
+                <Image
+                    asyncImageLoader:ImageLoader.Source="https://wallpapercat.com/w/full/6/6/5/15630-3840x2160-desktop-4k-hogwarts-legacy-background-image.jpg"
+                    Stretch="UniformToFill"
+                    RenderOptions.BitmapInterpolationMode="HighQuality" />
+                <Grid RowDefinitions="0.3*, *">
+                    <Border Grid.Row="0" Padding="20">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left">
+
+                            <controls:InputBorderControl Text="Magic" Margin="0,0,5,0" />
+                            <controls:InputBorderControl Text="Fantasy" Margin="0,0,5,0" />
+                            <controls:InputBorderControl Text="Open World" Margin="0,0,5,0" />
+
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="1" Padding="20">
+                        <Grid ColumnDefinitions="*, *">
+                            <Grid Grid.Column="0"
+                                  RowDefinitions="Auto,Auto"
+                                  VerticalAlignment="Bottom">
+
+                                <TextBlock Grid.Row="0"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           FontWeight="SemiBold"
+                                           Text="Hogwarts Legacy"
+                                           Foreground="White" />
+
+                                <TextBlock Grid.Row="1"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           LineHeight="12"
+                                           FontSize="8"
+                                           FontWeight="SemiLight"
+                                           TextWrapping="Wrap"
+                                           Text="Hogwarts Legacy is a 2023 action role-playing game developed by Avalanche Software and published by Warner Bros. Games under its Portkey Games label. It is part of the Wizarding World franchise, taking place a century prior to the Harry Potter novels."
+                                           Foreground="White" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom">
+
+                                    <controls:CircularIconButton
+                                        CircleSize="30"
+                                        IconSize="16"
+                                        Kind="HeartOutline"
+                                        BackgroundColor="#40000000"
+                                        IconColor="#ffffff" />
+
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Panel>
+
+        </Border>
+
+        <!-- Games -->
+        <Border Grid.Column="0" Grid.Row="2">
+            <Grid RowDefinitions="0.25*, *">
+
+                <Border Grid.Row="0" Padding="10,0,10,10">
+                    <Grid
+                        ColumnDefinitions="*, *">
+
+                        <TextBlock Grid.Column="0"
+                                   FontFamily="{DynamicResource Poppins}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap"
+                                   FontWeight="SemiBold"
+                                   Text="Actual Games"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
+
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right">
+                            <controls:CircularIconButton
+                                CircleSize="30"
+                                IconSize="16"
+                                Kind="ChevronLeft"
+                                BackgroundColor="#80464a47"
+                                IconColor="#ffffff"
+                                Command="{Binding PreviousPageCommand}"
+                                Margin="0,0,10,0" />
+                            <controls:CircularIconButton
+                                CircleSize="30"
+                                IconSize="16"
+                                Kind="ChevronRight"
+                                BackgroundColor="#80464a47"
+                                Command="{Binding NextPageCommand}"
+                                IconColor="#ffffff" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Carousel x:Name="Carousel"
+                          Grid.Row="1"
+                          SelectedIndex="{Binding CurrentPage, Mode=TwoWay}"
+                          ItemsSource="{Binding GamePages}">
+
+                    <Carousel.PageTransition>
+                        <CompositePageTransition>
+                            <PageSlide Duration="0:00:01.000" Orientation="Horizontal" />
+                        </CompositePageTransition>
+                    </Carousel.PageTransition>
+
+                    <Carousel.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsRepeater ItemsSource="{Binding Games}">
+                                <ItemsRepeater.Layout>
+                                    <WrapLayout Orientation="Horizontal" />
+                                </ItemsRepeater.Layout>
+                                <ItemsRepeater.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="5"
+                                                Margin="6,0,6,0"
+                                                ClipToBounds="True"
+                                                Width="156"
+                                                Height="220">
+                                            <Image asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
+                                                   Stretch="UniformToFill"
+                                                   RenderOptions.BitmapInterpolationMode="HighQuality" />
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsRepeater.ItemTemplate>
+                            </ItemsRepeater>
+                        </DataTemplate>
+                    </Carousel.ItemTemplate>
+
+                </Carousel>
+
+            </Grid>
+        </Border>
+
+        <controls:FriendListControl Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="1" />
+
+    </Grid>
+</UserControl>

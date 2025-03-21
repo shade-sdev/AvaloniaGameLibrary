@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:HexLaunch.Controls"
+             mc:Ignorable="d"
+             x:Class="HexLaunch.Controls.InputBorderControl">
+    <Border Background="#40000000"
+            Height="16"
+            CornerRadius="16"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+        <TextBlock Text="{Binding $parent[controls:InputBorderControl].Text}"
+                   FontFamily="{DynamicResource Poppins}"
+                   FontWeight="SemiLight"
+                   Foreground="White"
+                   FontSize="8"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="10,2" />
+    </Border>
+</UserControl>
