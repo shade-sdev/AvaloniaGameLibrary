@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
+             x:Class="GameLibraryUI.Views.Partials.GameView"
+             x:DataType="viewModels:GameViewModel">
+
+    <Grid>
+
+        <Image x:Name="BackgroundImage"
+               asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_1080p/ar2xdm.webp"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
+               Stretch="UniformToFill" />
+
+        <Rectangle x:Name="GradientOverlay"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0%,30%" EndPoint="0%,70%">
+                    <!-- Initial colors will be replaced dynamically -->
+                    <!-- Completely transparent at the top -->
+                    <GradientStop Offset="0" Color="#00121212" />
+                    <!-- Very subtle start of fade -->
+                    <GradientStop Offset="0.3" Color="#80121212" />
+                    <!-- Middle of the fade -->
+                    <GradientStop Offset="0.5" Color="#A0121212" />
+                    <!-- More intense fade -->
+                    <GradientStop Offset="0.7" Color="#C0121212" />
+                    <!-- Full solid color at the bottom -->
+                    <GradientStop Offset="1" Color="#E0121212" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Your content goes here -->
+        <StackPanel Margin="20">
+
+        </StackPanel>
+    </Grid>
+</UserControl>

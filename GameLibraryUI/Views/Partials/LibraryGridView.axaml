@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
-             xmlns:models="clr-namespace:GameLibraryUI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GameLibraryUI.Views.Partials.LibraryGridView"
              x:DataType="viewModels:LibraryViewTypeModel">
@@ -27,11 +26,17 @@
                                 Orientation="Horizontal" />
                 </ItemsRepeater.Layout>
                 <ItemsRepeater.ItemTemplate>
-                    <DataTemplate DataType="{x:Type models:Game}">
+                    <DataTemplate>
                         <Border CornerRadius="5"
                                 ClipToBounds="True"
                                 Width="150"
                                 Height="225">
+
+                            <Interaction.Behaviors>
+                                <ExecuteCommandOnPointerPressedBehavior
+                                    Command="{Binding $parent[ItemsRepeater].((viewModels:LibraryViewTypeModel)DataContext).NavigateToGameView}" />
+                            </Interaction.Behaviors>
+
                             <Grid RowDefinitions="*, 0.1*">
                                 <Image Grid.Row="0"
                                        asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"

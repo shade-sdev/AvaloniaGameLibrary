@@ -15,7 +15,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Background="Transparent"
         TransparencyLevelHint="AcrylicBlur"
-        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaToDecorationsHint="False"
         WindowStartupLocation="CenterScreen"
         Title="Dashboard"
         CanResize="False"
@@ -31,12 +31,13 @@
 
     <Border Classes="MainBackground">
 
-        <Grid RowDefinitions="0.03*, *" ColumnDefinitions="180, *">
+        <Grid ColumnDefinitions="165, *">
 
             <!-- Sidebar -->
-            <Grid Grid.Row="1" Grid.Column="0"
+            <Grid Grid.Column="0"
                   RowDefinitions="80, *, 200"
-                  ColumnDefinitions="*">
+                  ColumnDefinitions="*"
+                  Background="#40121212">
 
                 <!-- Title -->
                 <Border Grid.Row="0"
@@ -96,7 +97,7 @@
             </Grid>
 
             <!-- Main Content -->
-            <reactiveUi:RoutedViewHost Grid.Row="1" Grid.Column="1"
+            <reactiveUi:RoutedViewHost Grid.Column="1"
                                        Router="{Binding Router}">
 
                 <reactiveUi:RoutedViewHost.DefaultContent>

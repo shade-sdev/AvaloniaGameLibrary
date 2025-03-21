@@ -28,5 +28,6 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.1"/>
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.14"/>
         <PackageReference Include="Material.Icons.Avalonia" Version="2.3.1" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7"/>
     </ItemGroup>
 </Project>

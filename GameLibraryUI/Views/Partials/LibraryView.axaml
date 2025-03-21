@@ -10,7 +10,8 @@
              xmlns:gameLibraryUi="clr-namespace:GameLibraryUI"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.LibraryView"
-             x:DataType="viewModels:LibraryViewModel">
+             x:DataType="viewModels:LibraryViewModel"
+             Margin="5,0,0,0">
 
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />

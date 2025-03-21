@@ -7,7 +7,8 @@
              xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.HomeView"
-             x:DataType="viewModels:HomeViewModel">
+             x:DataType="viewModels:HomeViewModel"
+             Margin="5,0,0,0">
 
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />

@@ -1,17 +1,34 @@
 using System.Collections.ObjectModel;
+using System.Reactive;
 using GameLibraryUI.Models;
 using ReactiveUI;
 
 namespace GameLibraryUI.ViewModels;
 
-public class LibraryViewTypeModel(IScreen screen, ObservableCollection<Game> games, LibraryViewType viewType)
-    : ViewPartialBase(screen)
+public class LibraryViewTypeModel : ViewPartialBase
 {
-    public LibraryViewType ViewType { get; set; } = viewType;
+    public RoutingState Router { get; }
 
-    public ObservableCollection<Game> Games { get; set; } = games;
+    public ReactiveCommand<Unit, IRoutableViewModel> NavigateToGameView { get; }
 
-    public LibraryViewTypeModel() : this(null, null, LibraryViewType.Grid)
+    public LibraryViewType            ViewType { get; set; }
+    public ObservableCollection<Game> Games    { get; set; }
+
+    public LibraryViewTypeModel(IScreen                    screen,
+                                RoutingState               router,
+                                ObservableCollection<Game> games,
+                                LibraryViewType            viewType) :
+        base(screen)
+    {
+        Router   = router;
+        ViewType = viewType;
+        Games    = games;
+
+        NavigateToGameView = ReactiveCommand.CreateFromObservable
+            (() => Router.Navigate.Execute(new GameViewModel(screen)));
+    }
+
+    public LibraryViewTypeModel() : this(null, null, null, LibraryViewType.Grid)
     {
     }
 }

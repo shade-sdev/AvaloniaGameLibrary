@@ -27,7 +27,7 @@ public class MainWindowViewModel : ViewModelBase, IScreen
             (() => Router.Navigate.Execute(new HomeViewModel(this)));
 
         NavigateLibraryCommand = ReactiveCommand.CreateFromObservable
-            (() => Router.Navigate.Execute(new LibraryViewModel(this)));
+            (() => Router.Navigate.Execute(new LibraryViewModel(this, Router)));
 
         Router.CurrentViewModel.Subscribe(viewModel => { SelectedViewModel = viewModel; });
 
