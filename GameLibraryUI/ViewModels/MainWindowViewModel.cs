@@ -6,7 +6,7 @@ namespace GameLibraryUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase, IScreen
 {
-    public string Title { get; } = "GameAvaLib";
+    public string Title { get; } = "0xLaunch";
 
     public RoutingState Router { get; } = new();
 

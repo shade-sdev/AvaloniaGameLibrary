@@ -39,7 +39,7 @@
 
         <Border Padding="20">
 
-            <Grid RowDefinitions="0.6*,*, 0.8*">
+            <Grid RowDefinitions="0.6*,*, 0.6*">
 
                 <!-- Nav -->
                 <Grid Grid.Row="0"
