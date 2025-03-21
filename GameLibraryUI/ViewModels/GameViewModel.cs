@@ -1,5 +1,6 @@
 using System.Reactive;
 using GameLibraryUI.Models;
+using GameLibraryUI.Services;
 using ReactiveUI;
 
 namespace GameLibraryUI.ViewModels;
@@ -17,5 +18,10 @@ public class GameViewModel : ViewPartialBase
 
         BackCommand = ReactiveCommand.CreateFromObservable
             (() => Router.NavigateBack.Execute());
+    }
+
+    public GameViewModel() : base(null)
+    {
+        SelectedGame = GameService.Games[0];
     }
 }

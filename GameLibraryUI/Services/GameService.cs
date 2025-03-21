@@ -22,6 +22,7 @@ public static class GameService
             Manufacturer      = "Take-Two Interactive",
             Genre             = "Shooter",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         },
 
         new Game
@@ -37,6 +38,7 @@ public static class GameService
             Manufacturer      = "Ubisoft Entertainment",
             Genre             = "Role-playing (RPG), Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 1
         },
 
         new Game
@@ -52,6 +54,7 @@ public static class GameService
             Manufacturer      = "Kepler Interactive",
             Genre             = "Role-playing (RPG)",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 3
         },
 
         new Game
@@ -67,6 +70,7 @@ public static class GameService
             Manufacturer      = "Sony Interactive Entertainment",
             Genre             = "Shooter, Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         },
 
         new Game
@@ -82,6 +86,7 @@ public static class GameService
             Manufacturer      = "Bethesda Softworks",
             Genre             = "Shooter",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         },
 
         new Game
@@ -97,6 +102,7 @@ public static class GameService
             Manufacturer      = "Sony Interactive Entertainment",
             Genre             = "Shooter, Puzzle, Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 3
         },
 
         new Game
@@ -112,6 +118,7 @@ public static class GameService
             Manufacturer      = "",
             Genre             = "Simulator, Adventure, Indie",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 4
         },
 
         new Game
@@ -127,6 +134,7 @@ public static class GameService
             Manufacturer      = "Telstar Electronic Studios Ltd.\nSir-tech Software",
             Genre             = "Puzzle, Role-playing (RPG), Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 1
         },
 
         new Game
@@ -142,6 +150,7 @@ public static class GameService
             Manufacturer      = "2K",
             Genre             = "Shooter, Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         },
 
         new Game
@@ -157,6 +166,7 @@ public static class GameService
             Developer         = "Sucker Punch Productions",
             Genre             = "Role Playing",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 4.8
         },
 
         new Game
@@ -172,6 +182,7 @@ public static class GameService
             Manufacturer      = "Larian Studios",
             Genre             = "Role-playing (RPG), Strategy, Turn-based strategy (TBS), Tactical, Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 4.9
         },
 
         new Game
@@ -187,6 +198,7 @@ public static class GameService
             Manufacturer      = "Sega",
             Genre             = "Role-playing (RPG), Turn-based strategy (TBS), Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         },
 
         new Game
@@ -202,6 +214,7 @@ public static class GameService
             Manufacturer      = "WB Games",
             Genre             = "Role-playing (RPG), Adventure",
             ReleaseDate       = DateOnly.Parse("2021-10-17", CultureInfo.InvariantCulture),
+            Rating            = 5
         }
     ];
 }

@@ -6,9 +6,15 @@
              xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
              xmlns:controls="clr-namespace:GameLibraryUI.Controls"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:converters="clr-namespace:GameLibraryUI.Converters"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.GameView"
              x:DataType="viewModels:GameViewModel">
+
+    <Design.DataContext>
+        <viewModels:GameViewModel />
+    </Design.DataContext>
+
 
     <Grid>
 
@@ -140,17 +146,21 @@
                             <StackPanel Grid.Row="2"
                                         Orientation="Horizontal"
                                         Spacing="10">
-                                <controls:IconTextBadge
-                                    IconKind="MicrosoftWindows"
-                                    Text="PC" />
+                                <ItemsControl ItemsSource="{Binding SelectedGame.GamePlatFormTypes}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" Spacing="10" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
 
-                                <controls:IconTextBadge
-                                    IconKind="XboxLive"
-                                    Text="Series X|S" />
-
-                                <controls:IconTextBadge
-                                    IconKind="SonyPlaystation"
-                                    Text="PS5" />
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <controls:IconTextBadge
+                                                IconKind="{Binding Converter={x:Static converters:PlatformToIconConverter.Instance}}"
+                                                Text="{Binding Converter={x:Static converters:PlatformToTextConverter.Instance}}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -172,7 +182,7 @@
                                            FontSize="14"
                                            TextWrapping="Wrap"
                                            FontWeight="SemiBold"
-                                           Text="4.9"
+                                           Text="{Binding SelectedGame.Rating}"
                                            Foreground="White"
                                            Margin="0,0,10,0" />
                                 <avalonia:MaterialIcon Grid.Column="1"
@@ -242,7 +252,9 @@
                                     <TextBlock Grid.Row="3"
                                                FontFamily="{DynamicResource Poppins}"
                                                FontSize="10"
-                                               TextWrapping="Wrap"
+                                               MaxLines="1"
+                                               TextWrapping="NoWrap"
+                                               TextTrimming="CharacterEllipsis"
                                                FontWeight="SemiLight"
                                                Text="{Binding SelectedGame.Genre}"
                                                Foreground="White" />
