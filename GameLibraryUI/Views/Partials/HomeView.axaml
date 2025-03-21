@@ -8,7 +8,7 @@
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.HomeView"
              x:DataType="viewModels:HomeViewModel"
-             Margin="5,0,0,0">
+             Margin="8,0,0,0">
 
     <UserControl.Styles>
         <StyleInclude Source="/Styles/MainWindowStyle.axaml" />
@@ -188,7 +188,7 @@
                                         <Border CornerRadius="5"
                                                 Margin="6,0,6,0"
                                                 ClipToBounds="True"
-                                                Width="154"
+                                                Width="156"
                                                 Height="220">
                                             <Image asyncImageLoader:ImageLoader.Source="{Binding ImageSource}"
                                                    Stretch="UniformToFill"

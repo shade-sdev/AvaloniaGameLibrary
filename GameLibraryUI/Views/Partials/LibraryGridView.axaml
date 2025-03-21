@@ -29,12 +29,13 @@
                     <DataTemplate>
                         <Border CornerRadius="5"
                                 ClipToBounds="True"
-                                Width="150"
+                                Width="152"
                                 Height="225">
 
                             <Interaction.Behaviors>
                                 <ExecuteCommandOnPointerPressedBehavior
-                                    Command="{Binding $parent[ItemsRepeater].((viewModels:LibraryViewTypeModel)DataContext).NavigateToGameView}" />
+                                    Command="{Binding $parent[ItemsRepeater].((viewModels:LibraryViewTypeModel)DataContext).NavigateToGameView}"
+                                    CommandParameter="{Binding}" />
                             </Interaction.Behaviors>
 
                             <Grid RowDefinitions="*, 0.1*">

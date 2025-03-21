@@ -20,16 +20,18 @@ public class LibraryViewModel : ViewPartialBase, IScreen
     {
         ParentRouter = parentRouter;
         NavigateGridView = ReactiveCommand.CreateFromObservable
-            (() => Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Games, LibraryViewType.Grid)));
+            (() => Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Router, Games,
+                                                                    LibraryViewType.Grid)));
 
         NavigateListView = ReactiveCommand.CreateFromObservable
-            (() => Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Games, LibraryViewType.List)));
+            (() => Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Router, Games,
+                                                                    LibraryViewType.List)));
 
-        Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Games, LibraryViewType.Grid));
+        Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Router, Games, LibraryViewType.Grid));
     }
 
     public LibraryViewModel() : base(null!)
     {
-        Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Games, LibraryViewType.List));
+        Router.Navigate.Execute(new LibraryViewTypeModel(this, ParentRouter, Router, Games, LibraryViewType.List));
     }
 }

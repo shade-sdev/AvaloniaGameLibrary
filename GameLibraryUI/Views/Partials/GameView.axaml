@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              xmlns:viewModels="clr-namespace:GameLibraryUI.ViewModels"
+             xmlns:controls="clr-namespace:GameLibraryUI.Controls"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="GameLibraryUI.Views.Partials.GameView"
              x:DataType="viewModels:GameViewModel">
@@ -11,7 +13,7 @@
     <Grid>
 
         <Image x:Name="BackgroundImage"
-               asyncImageLoader:ImageLoader.Source="https://images.igdb.com/igdb/image/upload/t_1080p/ar2xdm.webp"
+               asyncImageLoader:ImageLoader.Source="{Binding SelectedGame.CoverImageSource}"
                RenderOptions.BitmapInterpolationMode="HighQuality"
                Stretch="UniformToFill" />
 
@@ -20,24 +22,274 @@
                    HorizontalAlignment="Stretch">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0%,30%" EndPoint="0%,70%">
-                    <!-- Initial colors will be replaced dynamically -->
-                    <!-- Completely transparent at the top -->
                     <GradientStop Offset="0" Color="#00121212" />
-                    <!-- Very subtle start of fade -->
                     <GradientStop Offset="0.3" Color="#80121212" />
-                    <!-- Middle of the fade -->
                     <GradientStop Offset="0.5" Color="#A0121212" />
-                    <!-- More intense fade -->
                     <GradientStop Offset="0.7" Color="#C0121212" />
-                    <!-- Full solid color at the bottom -->
                     <GradientStop Offset="1" Color="#E0121212" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
 
-        <!-- Your content goes here -->
-        <StackPanel Margin="20">
+        <Border Padding="20">
 
-        </StackPanel>
+            <Grid RowDefinitions="0.6*,*, 0.8*">
+
+                <!-- Nav -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*, 0.4*">
+                    <controls:CircularIconButton Grid.Column="0"
+                                                 CircleSize="30"
+                                                 IconSize="20"
+                                                 Kind="ChevronLeft"
+                                                 Command="{Binding BackCommand}"
+                                                 BackgroundColor="#70555557"
+                                                 IconColor="#ffffff"
+                                                 Margin="0,0,10,0"
+                                                 VerticalAlignment="Top" />
+
+                    <Grid Grid.Column="1"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="20">
+                            <controls:CircularIconButton
+                                CircleSize="30"
+                                IconSize="16"
+                                Kind="BellNotificationOutline"
+                                BackgroundColor="#70555557"
+                                IconColor="#ffffff" />
+                            <Grid ColumnDefinitions="0.4*, *"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center">
+
+                                <Border Grid.Column="0"
+                                        Width="35"
+                                        Height="35"
+                                        ClipToBounds="True"
+                                        CornerRadius="20"
+                                        Margin="0,0,10,0">
+                                    <Image
+                                        asyncImageLoader:ImageLoader.Source="https://avatars.githubusercontent.com/u/38840823?v=4"
+                                        Stretch="UniformToFill"
+                                        RenderOptions.BitmapInterpolationMode="HighQuality" />
+                                </Border>
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Vertical">
+                                    <TextBlock
+                                        FontFamily="{DynamicResource Poppins}"
+                                        FontSize="12"
+                                        TextWrapping="Wrap"
+                                        FontWeight="SemiBold"
+                                        Text="Shade"
+                                        Foreground="White"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" />
+                                    <TextBlock
+                                        FontFamily="{DynamicResource Poppins}"
+                                        FontSize="10"
+                                        TextWrapping="Wrap"
+                                        FontWeight="SemiLight"
+                                        Text="shade@shade.com"
+                                        Foreground="White"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Row="1"
+                      ColumnDefinitions="0.65*, *, *">
+                    <Border Grid.Column="0"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left"
+                            CornerRadius="6"
+                            ClipToBounds="True"
+                            Width="180"
+                            Height="250">
+                        <Image
+                            asyncImageLoader:ImageLoader.Source="{Binding SelectedGame.ImageSource}"
+                            Stretch="UniformToFill"
+                            RenderOptions.BitmapInterpolationMode="HighQuality" />
+                    </Border>
+
+                    <Grid Grid.Column="1"
+                          Margin="0,0,10,0">
+                        <Grid RowDefinitions="0.1*, *, 0.2*"
+                              VerticalAlignment="Bottom">
+                            <TextBlock Grid.Row="0"
+                                       FontFamily="{DynamicResource Poppins}"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"
+                                       FontWeight="SemiBold"
+                                       Text="{Binding SelectedGame.Title}"
+                                       Foreground="White"
+                                       Margin="0,0,0,10" />
+                            <TextBlock Grid.Row="1"
+                                       FontFamily="{DynamicResource Poppins}"
+                                       LineHeight="12"
+                                       FontSize="10"
+                                       FontWeight="SemiLight"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding SelectedGame.Description}"
+                                       Foreground="White"
+                                       Margin="0,0,0,10" />
+
+                            <StackPanel Grid.Row="2"
+                                        Orientation="Horizontal"
+                                        Spacing="10">
+                                <controls:IconTextBadge
+                                    IconKind="MicrosoftWindows"
+                                    Text="PC" />
+
+                                <controls:IconTextBadge
+                                    IconKind="XboxLive"
+                                    Text="Series X|S" />
+
+                                <controls:IconTextBadge
+                                    IconKind="SonyPlaystation"
+                                    Text="PS5" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="2"
+                          HorizontalAlignment="Right">
+                        <Grid RowDefinitions="0.2*, *, 0.2*"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom">
+                            <Grid Grid.Row="0"
+                                  ColumnDefinitions="*, *"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  RowDefinitions="Auto"
+                                  Margin="0,0,0,10">
+
+                                <TextBlock Grid.Column="0"
+                                           FontFamily="{DynamicResource Poppins}"
+                                           FontSize="14"
+                                           TextWrapping="Wrap"
+                                           FontWeight="SemiBold"
+                                           Text="4.9"
+                                           Foreground="White"
+                                           Margin="0,0,10,0" />
+                                <avalonia:MaterialIcon Grid.Column="1"
+                                                       Kind="Star"
+                                                       Height="20"
+                                                       Width="20"
+                                                       Foreground="White" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  ColumnDefinitions="150, 150"
+                                  Margin="0,0,0,10">
+                                <Grid Grid.Column="0"
+                                      RowDefinitions="*, *, *, *">
+                                    <TextBlock Grid.Row="0"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="Release Date"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="1"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="Manufacturer"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="2"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="Developer"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="3"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="Genre"
+                                               Foreground="White" />
+                                </Grid>
+
+                                <Grid Grid.Column="1"
+                                      RowDefinitions="*, *, *, *">
+                                    <TextBlock Grid.Row="0"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="{Binding SelectedGame.ReleaseDate}"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="1"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="{Binding SelectedGame.Manufacturer}"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="2"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="{Binding SelectedGame.Developer}"
+                                               Foreground="White" />
+                                    <TextBlock Grid.Row="3"
+                                               FontFamily="{DynamicResource Poppins}"
+                                               FontSize="10"
+                                               TextWrapping="Wrap"
+                                               FontWeight="SemiLight"
+                                               Text="{Binding SelectedGame.Genre}"
+                                               Foreground="White" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid ColumnDefinitions="150, 50"
+                                      VerticalAlignment="Center">
+                                    <Button Grid.Column="0"
+                                            CornerRadius="4"
+                                            HorizontalAlignment="Stretch"
+                                            Foreground="White"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center">
+                                        <Button.Background>
+                                            <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                                                <GradientStop Color="#e0215b" Offset="0.0" />
+                                                <GradientStop Color="#db4a2e" Offset="0.3" />
+                                                <GradientStop Color="#FF5E3A" Offset="0.6" />
+                                                <GradientStop Color="#e0215b" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <TextBlock
+                                            FontFamily="{DynamicResource Poppins}"
+                                            FontSize="12"
+                                            TextWrapping="Wrap"
+                                            FontWeight="SemiBold"
+                                            Text="Install"
+                                            Foreground="White" />
+
+                                    </Button>
+                                    <controls:CircularIconButton Grid.Column="1"
+                                                                 BackgroundColor="#70555557"
+                                                                 IconColor="White"
+                                                                 Kind="HeartOutline"
+                                                                 HorizontalAlignment="Right"
+                                                                 HoverBackgroundColor="Red"
+                                                                 IconSize="20"
+                                                                 CircleSize="30" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+        </Border>
     </Grid>
 </UserControl>

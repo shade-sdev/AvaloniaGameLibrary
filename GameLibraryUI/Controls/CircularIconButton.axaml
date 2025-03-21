@@ -7,16 +7,17 @@
              mc:Ignorable="d"
              x:Class="GameLibraryUI.Controls.CircularIconButton">
 
-    <Button
-        Classes="IconButton"
-        Width="{Binding $parent[controls:CircularIconButton].CircleSize}"
-        Height="{Binding $parent[controls:CircularIconButton].CircleSize}"
-        Background="{Binding $parent[controls:CircularIconButton].BackgroundColor}"
-        BorderThickness="0"
-        Padding="0"
-        CornerRadius="44"
-        Command="{Binding $parent[controls:CircularIconButton].Command}"
-        CommandParameter="{Binding $parent[controls:CircularIconButton].CommandParameter}">
+    <Button HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Classes="IconButton"
+            Width="{Binding $parent[controls:CircularIconButton].CircleSize}"
+            Height="{Binding $parent[controls:CircularIconButton].CircleSize}"
+            Background="{Binding $parent[controls:CircularIconButton].BackgroundColor}"
+            BorderThickness="0"
+            Padding="0"
+            CornerRadius="44"
+            Command="{Binding $parent[controls:CircularIconButton].Command}"
+            CommandParameter="{Binding $parent[controls:CircularIconButton].CommandParameter}">
         <avalonia:MaterialIcon Kind="{Binding $parent[controls:CircularIconButton].Kind}"
                                Height="{Binding $parent[controls:CircularIconButton].IconSize}"
                                Width="{Binding $parent[controls:CircularIconButton].IconSize}"
