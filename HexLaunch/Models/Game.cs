@@ -11,6 +11,7 @@ public class Game
     public          string?                 Description       { get; set; }
     public required string                  ImageSource       { get; set; }
     public          string?                 CoverImageSource  { get; set; }
+    public          List<string>?           Screenshots       { get; set; }
     public          List<GamePlatFormType>? GamePlatFormTypes { get; set; }
     public          DateOnly?               ReleaseDate       { get; set; }
     public          string?                 Manufacturer      { get; set; }
