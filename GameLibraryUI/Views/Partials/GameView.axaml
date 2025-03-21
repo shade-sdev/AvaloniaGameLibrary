@@ -233,7 +233,7 @@
                                                FontSize="10"
                                                TextWrapping="Wrap"
                                                FontWeight="SemiLight"
-                                               Text="{Binding SelectedGame.ReleaseDate}"
+                                               Text="{Binding SelectedGame.ReleaseDate,  Converter={x:Static converters:DateOnlyFormatConverter.Instance}}"
                                                Foreground="White" />
                                     <TextBlock Grid.Row="1"
                                                FontFamily="{DynamicResource Poppins}"

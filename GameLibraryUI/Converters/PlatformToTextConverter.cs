@@ -9,7 +9,6 @@ public class PlatformToTextConverter : IValueConverter
 {
     public static readonly PlatformToTextConverter Instance = new();
 
-
     public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return value switch

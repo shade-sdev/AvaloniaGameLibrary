@@ -9,7 +9,6 @@ public class PlatformToIconConverter : IValueConverter
 {
     public static readonly PlatformToIconConverter Instance = new();
 
-
     public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return value switch
